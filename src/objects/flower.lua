@@ -17,7 +17,7 @@ local sprites = {
 }
 
 local sounds = {
-    poof = love.audio.newSource('res/sounds/poof.mp3')
+    poof = love.audio.newSource('res/sounds/poof.mp3', "stream")
 }
 
 local Pollen = Class.new()
@@ -88,7 +88,7 @@ function Flower:init(objects, x, y)
     self.splashes:setPosition(x, y)
     self.splashes:setOffset(16, 32)
     self.splashes:setParticleLifetime(10)
-    self.splashes:setAreaSpread('uniform', 70, 4)
+    self.splashes:setEmissionArea('uniform', 70, 4)
 
     self.timer = Timer.new()
     self.timer:every(10, function()
@@ -98,7 +98,7 @@ function Flower:init(objects, x, y)
     self.droplets = love.graphics.newParticleSystem(sprites.dropletSmall)
     self.droplets:setSizes(0.4, 0)
     self.droplets:setPosition(x, y)
-    self.droplets:setAreaSpread('uniform', 70, 4)
+    self.droplets:setEmissionArea('uniform', 70, 4)
     self.droplets:setParticleLifetime(30)
     self.droplets:setLinearAcceleration(0, 0.2)
 
